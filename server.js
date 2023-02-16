@@ -33,12 +33,14 @@ app.get('/',(req,res) => {
     session=req.session;
     if(session.userid){
         res.send("Welcome User <a href=\'/logout'>click to logout</a>");
-    }else
-    res.sendFile('views/index.html',{root:__dirname})
+    }
+    else{
+        res.sendFile('views/index.html',{root:__dirname})
+    }
 });
 
 app.post('/user',(req,res) => {
-    if(req.body.username == myusername && req.body.password == mypassword){
+    if(req.body.username == username && req.body.password == password){
         session=req.session;
         session.userid=req.body.username;
         console.log(req.session)
